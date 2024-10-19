@@ -6,6 +6,7 @@ export default {
     extend: {
       fontFamily: {
         sans: [
+          "San Francisco",
           '"Inter"',
           "ui-sans-serif",
           "system-ui",
@@ -15,6 +16,15 @@ export default {
           '"Segoe UI Symbol"',
           '"Noto Color Emoji"',
         ],
+      },
+      colors: {
+        primary: "#666758",
+        secondary: "#5c3b2f",
+        tertiary: "#cecac0",
+        quaternary: "#8a7463",
+      },
+      fontSize: {
+        xxxl: "8rem",
       },
     },
   },
