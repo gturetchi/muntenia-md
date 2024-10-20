@@ -24,7 +24,7 @@ export default {
         quaternary: "#8a7463",
       },
       fontSize: {
-        xxxl: "8rem",
+        xxxl: "10rem",
       },
     },
   },

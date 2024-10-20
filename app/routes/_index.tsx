@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { MetaFunction } from "@remix-run/node";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const meta: MetaFunction = () => {
   return [
@@ -25,53 +25,42 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center bg-white space-y-0">
-      <motion.nav
-        className="fixed top-0 left-0 w-full bg-gray-800 text-white flex justify-between p-4"
-        initial={{ y: -100 }} // Start off-screen (above the viewport)
-        animate={{ y: 0 }} // Animate into view
-        transition={{ duration: 0.5 }} // Smooth transition
-      >
-        <div className="font-bold">Muntenia</div>
-        <ul className="flex space-x-4">
-          <li>
-            <a href="#home" className="hover:underline">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#about" className="hover:underline">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="#contact" className="hover:underline">
-              Contact
-            </a>
-          </li>
-        </ul>
-      </motion.nav>
-      <div className="h-screen flex flex-col items-center justify-center pl-5 pr-5">
+    <div className="flex flex-col items-center justify-center bg-white space-y-0 snap-y">
+      <div className="h-screen w-screen flex flex-col items-center justify-center pl-5 pr-5 bg-tertiary snap-center">
         <motion.img
           src="gif/animated-logo.gif"
           alt="Muntenia Logo"
-          className="w-[75vw]"
+          className="w-[75vw] justify-self-end"
           initial={{ scale: 1 }}
-          animate={{ scale: 0.8 }}
-          transition={{ delay: 1, duration: 0.5 }}
+          animate={{ scale: 0.6, y: [0, -200, 0] }}
+          transition={{
+            type: "spring",
+            stiffness: 80,
+            duration: 0.8,
+            times: [0, 0.5, 1],
+          }}
+          layout
         />
-        {isVisible && (
-          <motion.h1
-            className="text-xxxl font-bold text-primary m-0 p-0"
-            initial={{ opacity: 1, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring" }}
-          >
-            Muntenia
-          </motion.h1>
-        )}
+        <AnimatePresence mode="popLayout">
+          {isVisible && (
+            <motion.h1
+              className="text-xxxl font-extrabold text-primary m-0 p-0"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 100,
+                damping: 15,
+                duration: 0.8,
+              }}
+            >
+              Muntenia<sup className="text-lg align-super">©</sup>
+            </motion.h1>
+          )}
+        </AnimatePresence>
       </div>
-      <div className="h-screen bg-secondary w-screen">
+      <div className="h-screen bg-secondary w-screen snap-center">
         <p className="text-tertiary">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
