@@ -41,12 +41,3 @@ export default function Index() {
     </>
   );
 }
-
-//
-// WEB PAGE DESIGN
-// 1. Logo + Title
-// 2. About Us
-// 3. Services
-// 4. Contact Us
-// 5. Reviews
-//
