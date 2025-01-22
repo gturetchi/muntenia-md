@@ -4,6 +4,8 @@ import type { MetaFunction } from "@remix-run/node";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import Header from "~/components/header";
+import About from "~/components/about";
+import Services from "~/components/services";
 
 export const meta: MetaFunction = () => {
   return [
@@ -17,27 +19,24 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  const svgRef = useRef(null);
-  const [pathLength, setPathLength] = useState(0);
   const { scrollYProgress } = useScroll();
 
-  const strokeDashoffset = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [pathLength, 0]
-  );
-
-  useEffect(() => {
-    const path = svgRef.current as SVGPathElement | null;
-    if (path) {
-      const length = path.getTotalLength();
-      setPathLength(length);
-    }
-  }, []);
+  const headerY = useTransform(scrollYProgress, [0, 1], ["0%", "-200%"]);
+  const aboutY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   return (
     <>
-      <Header />
+      <motion.div style={{ y: headerY }}>
+        <Header />
+      </motion.div>
+
+      <motion.div style={{ y: aboutY }}>
+        <About />
+      </motion.div>
+
+      <motion.div>
+        <Services />
+      </motion.div>
     </>
   );
 }

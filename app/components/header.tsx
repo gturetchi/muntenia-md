@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export default function Header() {
   return (
     <>
-      <div className="w-screen h-screen flex align-middle justify-center">
+      <div className="w-screen h-screen flex align-middle justify-center bg-orange-800">
         <motion.div
           animate={{
             scale: [1, 2, 2, 1, 1],
