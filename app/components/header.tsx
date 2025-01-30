@@ -7,6 +7,11 @@ export default function Header() {
             Muntenia
           </div>
         </div>
+        <img
+          src="images/logo.svg"
+          className="w-[70vw] brightness-0 invert"
+          alt="Logo"
+        />
       </div>
     </>
   );

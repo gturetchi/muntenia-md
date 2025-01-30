@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Header from "~/components/header";
 import About from "~/components/about";
 import Services from "~/components/services";
+import Navbar from "~/components/navbar";
 
 export const meta: MetaFunction = () => {
   return [
@@ -26,6 +27,10 @@ export default function Index() {
 
   return (
     <>
+      <motion.div className="">
+        <Navbar />
+      </motion.div>
+
       <motion.div style={{ y: headerY }}>
         <Header />
       </motion.div>
