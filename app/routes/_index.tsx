@@ -1,4 +1,3 @@
-import { useEffect, useState, useRef } from "react";
 import type { MetaFunction } from "@remix-run/node";
 
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -27,7 +26,7 @@ export default function Index() {
 
   return (
     <>
-      <motion.div className="">
+      <motion.div>
         <Navbar />
       </motion.div>
 
